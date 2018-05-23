@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link href='{% static "edit/css/chosen.min.css" %}' rel='stylesheet'>
+    {{ form.media }}
+    <style type="text/css">
+        .dept_select{min-width: 200px;}
+        #country,#province,#city{
+            width: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div style="width: 80%; margin-left: 10%">
+        <form action="{% url 'travel:edit' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+{#            三级联查#}
+            <div class="form-group" style="margin-top: 3em;margin-bottom: 1em">
+                <label for="exampleInputEmail1">攻略所属地址：</label>
+                <select id="country" class="dept_select" name="country"></select>
+                <select id="province" class="dept_select" name="province"></select>
+                <select id="city" class="dept_select" name="city"></select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">标题</label>
+                <input type="text" class="form-control" name="title" placeholder="攻略标题">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">简介</label>
+                <input type="text" class="form-control" name="introduction" placeholder="详情描述">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">封面图片</label>
+                <input type="file" id="exampleInputFile" name="icon">
+            </div>
+            <div class="edit-area">
+                {{ form }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-bottom: 5em; margin-top: 1em; width: 8em; height: 3em;">提交</button>
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block foot_js %}
+    <script src="{% static 'edit/js/chosen.jquery.min.js' %}"></script>
+    <script src="{% static 'edit/js/area_chs.js' %}"></script>
+    <script type="text/javascript">
+        var areaObj = [];
+        function initLocation(e){
+            var a = 0;
+            for (var m in e) {
+                areaObj[a] = e[m];
+                a++;
+            }
+        }
+    </script>
+    <script src="{% static 'edit/js/location_chs.js' %}"></script>
+    <script type="text/javascript">
+        var country = '';
+        for (var a=0;a<=_areaList.length-1;a++) {
+            var objContry = _areaList[a];
+            country += '<option value="'+objContry+'" a="'+(a+1)+'">'+objContry+'</option>';
+        }
+    $("#country").html(country).chosen({search_contains: true}).change(function(){
+            var a = $("#country").find("option[value='"+$("#country").val()+"']").attr("a");
+            var _province = areaObj[a];
+            var province = '';
+            for (var b in _province) {
+                var objProvince = _province[b];
+                if (objProvince.n) {
+                    province += '<option value="'+objProvince.n+'" b="'+b+'">'+objProvince.n+'</option>';
+                }
+            }
+            if (!province) {
+                province = '<option value="" b="0">--</option>';
+            }
+            $("#province").html(province).chosen({search_contains: true}).change(function(){
+                var b = $("#province").find("option[value='"+$("#province").val()+"']").attr("b");
+                var _city = areaObj[a][b];
+                var city = '';
+                for (var c in _city) {
+                    var objCity = _city[c];
+                    if (objCity.n) {
+                        city += '<option value="'+objCity.n+'">'+objCity.n+'</option>';
+                    }
+                }
+                if (!city) {
+                    var city = '<option value="">--</option>';
+                }
+                $("#city").html(city).chosen({search_contains: true}).change();
+                $(".dept_select").trigger("chosen:updated");
+            });
+            $("#province").change();
+            $(".dept_select").trigger("chosen:updated");
+        });
+        $("#country").change();
+    </script>
+
+{% endblock %}

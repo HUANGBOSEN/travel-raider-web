@@ -1,0 +1,547 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<style>
+    .line-hide-1{overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+    .hothover:hover{color: #999!important;}
+</style>
+<link rel="stylesheet" href="{% static 'all_raider/css/font-icon.css' %}">
+<link rel="stylesheet" href="{% static 'all_raider/css/common.css' %}">
+
+{% endblock %}
+    <div class="channel-container">
+	<!-- 通栏广告 -->
+	<a class="create-man-banner" href="https://www.vmovier.com/54028" target="_blank"><img src="https://oss-xpc0.xpccdn.com/Upload/edu/2018/05/175afd07567f77a.png"></a>
+	<div class="choose-bar-v3">
+		<div class="choose-bar-top">
+			<ul class="first-type fs_12 c_b_3 fw_300 clearfix">
+				<li class="selected"><a href="javascript:;">全部作品</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-1/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">广告</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-16/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">宣传片</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-27/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">MV</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-29/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">系列短视频</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-31/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">剧情短片</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-49/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">纪录</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-61/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">特殊摄影</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-69/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">动画</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-76/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">创意混剪</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-81/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">影视</a></li>
+                <!-- <li ><a href="http://www.xinpianchang.com/channel/index/type-vr/sort-like?from=articleListPage">VR</a></li> -->
+			</ul>
+        </div>
+		<div class="choose-bar-bottom clearfix">
+			<ul class="sort-type fs_12 fw_300 c_b_3 clearfix">
+				<li class="selected"><a class="icon-hot" href="javascript:;">热门</a></li>
+				<li ><a class="icon-choice" href="http://www.xinpianchang.com/channel/index/id-0/sort-pick/type-0/duration_type-0/resolution_type-?from=articleListPage">精选</a></li>
+				<li ><a class="icon-time" href="http://www.xinpianchang.com/channel/index/id-0/sort-addtime/type-0/duration_type-0/resolution_type-?from=articleListPage">最新</a></li>
+			</ul>
+			<ul class="detail-type fs_12 fw_300 c_b_3 clearfix">
+				<li class="icon-arrow-down duration-item">
+					<span>
+					作品时长																														</span>
+					<div class="common-hover-wrap">
+						<div class="hover-box">
+							<ul class="list durationList">
+								<li class="selected"><a href="javascript:;">全部</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-1/resolution_type-?from=articleListPage">小于1分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-2/resolution_type-?from=articleListPage">1-5分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-3/resolution_type-?from=articleListPage">5-10分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-4/resolution_type-?from=articleListPage">10-30分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-5/resolution_type-?from=articleListPage">30分钟以上</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="icon-arrow-down morechooce-item">更多筛选
+					<div class="common-hover-wrap">
+						<div class="hover-box btnDnN">
+							<div class="title fs_12 fw_500 c_b_9">清晰度</div>
+							<ul class="select-list clearfix click-type">
+								<li class="selected" data-type="resolution_type" data-id="0"><i></i>全部</li>
+								<li  data-type="resolution_type" data-id="2K"><i></i>2K</li>
+								<li  data-type="resolution_type" data-id="4K"><i></i>4K</li>
+							</ul>
+							<div class="title fs_12 fw_500 c_b_9">作品类型</div>
+							<ul class="select-list clearfix click-type">
+								<li class="selected" data-type="type" data-id="0"><i></i>全部</li>
+								<li  data-type="type" data-id="vr"><i></i>VR作品</li>
+							</ul>
+							<div class="btn click-btn">确定</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="channel-con">
+		<ul class="raider-list">
+            <li class="enter-filmplay" data-articleid="90395" data-videourl="ArticleList">
+				<a class="video-cover" href="javascript:;">
+					<img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/19/5b00341169948.jpeg@540w_324h_1e_1c.jpg">
+					<span class="duration fs_12">08' 48''</span>
+					<div class="video-cover-con">
+						<div class="video-mark">
+																							<span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+																						<div class="list-tags">
+																							</div>
+						</div>
+						<!-- <p class="fs_12"> - </p> -->
+					</div>
+					<div class="video-hover-con">
+						<div class="fs_12 fw_300 c_w_f desc line-hide-3">73人团队，23天堪景，34天全程拍摄，2000人参与演出，21天后期制作，24个剪辑版本，历时5个月创作完成，每一个画面都凝聚创作者的心血。感谢贵州省政府领导和制作公司天马传媒给了创作者极大的信任和创作空间，才能向大家呈现一个美丽多彩的贵州。</div>
+						<p class="fs_12">2017-10-02 发布</p>
+					</div>
+				</a>
+				<div class="video-con">
+					<div class="video-con-top">
+						<a href="javascript:;">
+							<p class="fs_14 fw_600 c_b_3 line-hide-1">贵州省旅游形象片8min</p>
+						</a>
+						<div class="new-cate">
+							<span class="fs_12 fw_300 c_b_9">
+														宣传片 - 国家城市							</span>
+													</div>
+						<div class="video-view fs_12 fw_300 c_b_9">
+							<span class="fw_300 icon-play-volume">82.2w</span>
+							<span class="fw_300 c_b_9 icon-like">18166</span>
+						</div>
+					</div>
+					<div class="user-info">
+						<a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10046166">
+							<span class="head-wrap" data-userid="10046166">
+
+																	<img class="avator v-center" src="https://cs.xinpianchang.com/Upload/user/2017/08/095989fc56bb848.jpeg@40w_40h_1e_1c">
+																			<span class="author-v yellow-v"></span>
+
+
+							</span>
+							<span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+																	大米															</span>
+						</a>
+						<span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">摄影指导</span>
+						<!--  -->
+											</div>
+				</div>
+			</li>
+            <li class="enter-filmplay" data-articleid="10221287" data-videourl="ArticleList">
+    <a class="video-cover" href="javascript:;">
+        <img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/17/5afcfae5e064e.jpeg@540w_324h_1e_1c.jpg">
+        <span class="duration fs_12">02' 00''</span>
+        <div class="video-cover-con">
+            <div class="video-mark">
+                                                                                <span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+                                                                            <div class="list-tags">
+                                                                                </div>
+            </div>
+            <!-- <p class="fs_12"> - </p> -->
+        </div>
+        <div class="video-hover-con">
+            <div class="fs_12 fw_300 c_w_f desc line-hide-3">Agency:BBDO Beijing
+Director:Dave Meyers
+VFX Supervisor:Barry Greaves
+VFX Supervisor (CG):Christian Kalata
+VFX Producer:Rachel Zhao
+Grade:MPC
+Colourist:Vincent Taylor
+
+VFX Team:
+Iman Javaherypour
+Madhuka Gunasekera
+Joseph Tsang
+Franki...</div>
+            <p class="fs_12">2018-05-17 发布</p>
+        </div>
+    </a>
+    <div class="video-con">
+        <div class="video-con-top">
+            <a href="javascript:;">
+                <p class="fs_14 fw_600 c_b_3 line-hide-1">Mercedes Brand</p>
+            </a>
+            <div class="new-cate">
+                <span class="fs_12 fw_300 c_b_9">
+                                            广告 - 汽车							</span>
+                                        </div>
+            <div class="video-view fs_12 fw_300 c_b_9">
+                <span class="fw_300 icon-play-volume">868</span>
+                <span class="fw_300 c_b_9 icon-like">53</span>
+            </div>
+        </div>
+        <div class="user-info">
+            <a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10331345">
+                <span class="head-wrap" data-userid="10331345">
+
+                                                        <img class="avator v-center" src="https://oss-xpc0.xpccdn.com/Upload/user/2018/05/165afbaba59161c.jpeg">
+                                                                <span class="author-v blue-v"></span>
+
+
+                </span>
+                <span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+                                                        MPC															</span>
+            </a>
+            <span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">制作方／动画师／调色／特效</span>
+            <!--  -->
+                                </div>
+    </div>
+</li>
+            <li class="enter-filmplay" data-articleid="70398" data-videourl="ArticleList">
+				<a class="video-cover" href="javascript:;">
+					<img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/11/5af542c81f0fe.jpeg@540w_324h_1e_1c.jpg">
+					<span class="duration fs_12">04' 13''</span>
+					<div class="video-cover-con">
+						<div class="video-mark">
+																							<span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+																						<div class="list-tags">
+																							</div>
+						</div>
+						<!-- <p class="fs_12"> - </p> -->
+					</div>
+					<div class="video-hover-con">
+						<div class="fs_12 fw_300 c_w_f desc line-hide-3"></div>
+						<p class="fs_12">2017-07-02 发布</p>
+					</div>
+				</a>
+				<div class="video-con">
+					<div class="video-con-top">
+						<a href="javascript:;">
+							<p class="fs_14 fw_600 c_b_3 line-hide-1">飘柔－勇敢爱</p>
+						</a>
+						<div class="new-cate">
+							<span class="fs_12 fw_300 c_b_9">
+														广告 - 其他							</span>
+													</div>
+						<div class="video-view fs_12 fw_300 c_b_9">
+							<span class="fw_300 icon-play-volume">3263</span>
+							<span class="fw_300 c_b_9 icon-like">94</span>
+						</div>
+					</div>
+					<div class="user-info">
+						<a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10013904">
+							<span class="head-wrap" data-userid="10013904">
+
+																	<img class="avator v-center" src="https://oss-xpc0.xpccdn.com/Upload/user/2018/01/225a64cfe83fef3.jpeg">
+																			<span class="author-v yellow-v"></span>
+
+
+							</span>
+							<span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+																	承孝杰															</span>
+						</a>
+						<span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">导演</span>
+						<!--  -->
+											</div>
+				</div>
+			</li>
+        </ul>
+		<div class="page-wrap">
+			<div class="page">
+                <span class="current">1</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2">2</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-3">3</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-4">4</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5">5</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-6">6</a>
+                <span class="page-points">...</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5263" title="尾页">5263</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2" title="下一页">
+                <span class="arrow-page icon-arrow-right"></span></a></div>
+		</div>
+	</div>
+</div>
+{% block content %}
+
+{% endblock %}
+
+{% block foot_js %}
+    <script src="{% static 'all_raider/js/artDialog.min.js' %}"></script>
+    <script src="{% static 'all_raider/js/artDialog.plugins.min.js' %}"></script>
+{% endblock %}
+
+{#{% extends 'base.html' %}#}
+{% load staticfiles %}
+{% block head %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block foot_js %}
+{% endblock %}
+<!DOCTYPE HTML>
+<html  xmlns:wb="http://open.weibo.com/wb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="qc:admins" content="20574040667416216375" />
+<meta property="qc:admins" content="205740460760160116301676375" />
+<meta name="robots" content="all" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="author" content="" />
+<meta name="Copyright" content="" />
+<meta name="renderer" content="webkit">
+<title>作品 - 新片场社区</title>
+<meta name="keywords" content="原创短片,原创视频,微电影,原创作品,创作人,影人社区,影视社区,新媒体电影,新媒体影视,互联网影视,互联网电影,发行,短片,微电影,原创视频,创作人" />
+<meta name="description" content="汇集新片场创作人短片原创作品,覆盖剧情片,动画,纪录片,广告短片,宣传片,MV,特殊摄影,混剪,配音,栏目,网剧,实验短片,预告片,花絮等丰富类型." />
+<link rel="shortcut icon" href="/favicon.ico?20161118" />
+<link rel="apple-touch-icon" href="/touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
+<style>
+			.line-hide-1{overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+	.hothover:hover{
+	color: #999!important;
+}
+</style>
+<link rel="stylesheet" href="{% static 'all_raider/css/font-icon.css' %}">
+<link rel="stylesheet" href="{% static 'all_raider/css/common.css' %}">
+<!-- <script src="/public/js/wb.js" type="text/javascript" charset="utf-8"></script> -->
+
+</head>
+<body>
+
+<div class="channel-container">
+	<!-- 通栏广告 -->
+	<a class="create-man-banner" href="https://www.vmovier.com/54028" target="_blank"><img src="https://oss-xpc0.xpccdn.com/Upload/edu/2018/05/175afd07567f77a.png"></a>
+	<div class="choose-bar-v3">
+		<div class="choose-bar-top">
+			<ul class="first-type fs_12 c_b_3 fw_300 clearfix">
+				<li class="selected"><a href="javascript:;">全部作品</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-1/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">广告</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-16/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">宣传片</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-27/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">MV</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-29/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">系列短视频</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-31/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">剧情短片</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-49/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">纪录</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-61/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">特殊摄影</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-69/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">动画</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-76/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">创意混剪</a></li>
+                <li ><a href="http://www.xinpianchang.com/channel/index/id-81/sort-like/duration_type-0/resolution_type-/type-0?from=articleListPage">影视</a></li>
+                <!-- <li ><a href="http://www.xinpianchang.com/channel/index/type-vr/sort-like?from=articleListPage">VR</a></li> -->
+			</ul>
+        </div>
+		<div class="choose-bar-bottom clearfix">
+			<ul class="sort-type fs_12 fw_300 c_b_3 clearfix">
+				<li class="selected"><a class="icon-hot" href="javascript:;">热门</a></li>
+				<li ><a class="icon-choice" href="http://www.xinpianchang.com/channel/index/id-0/sort-pick/type-0/duration_type-0/resolution_type-?from=articleListPage">精选</a></li>
+				<li ><a class="icon-time" href="http://www.xinpianchang.com/channel/index/id-0/sort-addtime/type-0/duration_type-0/resolution_type-?from=articleListPage">最新</a></li>
+			</ul>
+			<ul class="detail-type fs_12 fw_300 c_b_3 clearfix">
+				<li class="icon-arrow-down duration-item">
+					<span>
+					作品时长																														</span>
+					<div class="common-hover-wrap">
+						<div class="hover-box">
+							<ul class="list durationList">
+								<li class="selected"><a href="javascript:;">全部</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-1/resolution_type-?from=articleListPage">小于1分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-2/resolution_type-?from=articleListPage">1-5分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-3/resolution_type-?from=articleListPage">5-10分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-4/resolution_type-?from=articleListPage">10-30分钟</a></li>
+								<li ><a href="http://www.xinpianchang.com/channel/index/id-0/sort-like/type-0/duration_type-5/resolution_type-?from=articleListPage">30分钟以上</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="icon-arrow-down morechooce-item">更多筛选
+					<div class="common-hover-wrap">
+						<div class="hover-box btnDnN">
+							<div class="title fs_12 fw_500 c_b_9">清晰度</div>
+							<ul class="select-list clearfix click-type">
+								<li class="selected" data-type="resolution_type" data-id="0"><i></i>全部</li>
+								<li  data-type="resolution_type" data-id="2K"><i></i>2K</li>
+								<li  data-type="resolution_type" data-id="4K"><i></i>4K</li>
+							</ul>
+							<div class="title fs_12 fw_500 c_b_9">作品类型</div>
+							<ul class="select-list clearfix click-type">
+								<li class="selected" data-type="type" data-id="0"><i></i>全部</li>
+								<li  data-type="type" data-id="vr"><i></i>VR作品</li>
+							</ul>
+							<div class="btn click-btn">确定</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="channel-con">
+		<ul class="raider-list">
+            <li class="enter-filmplay" data-articleid="90395" data-videourl="ArticleList">
+				<a class="video-cover" href="javascript:;">
+					<img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/19/5b00341169948.jpeg@540w_324h_1e_1c.jpg">
+					<span class="duration fs_12">08' 48''</span>
+					<div class="video-cover-con">
+						<div class="video-mark">
+																							<span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+																						<div class="list-tags">
+																							</div>
+						</div>
+						<!-- <p class="fs_12"> - </p> -->
+					</div>
+					<div class="video-hover-con">
+						<div class="fs_12 fw_300 c_w_f desc line-hide-3">73人团队，23天堪景，34天全程拍摄，2000人参与演出，21天后期制作，24个剪辑版本，历时5个月创作完成，每一个画面都凝聚创作者的心血。感谢贵州省政府领导和制作公司天马传媒给了创作者极大的信任和创作空间，才能向大家呈现一个美丽多彩的贵州。</div>
+						<p class="fs_12">2017-10-02 发布</p>
+					</div>
+				</a>
+				<div class="video-con">
+					<div class="video-con-top">
+						<a href="javascript:;">
+							<p class="fs_14 fw_600 c_b_3 line-hide-1">贵州省旅游形象片8min</p>
+						</a>
+						<div class="new-cate">
+							<span class="fs_12 fw_300 c_b_9">
+														宣传片 - 国家城市							</span>
+													</div>
+						<div class="video-view fs_12 fw_300 c_b_9">
+							<span class="fw_300 icon-play-volume">82.2w</span>
+							<span class="fw_300 c_b_9 icon-like">18166</span>
+						</div>
+					</div>
+					<div class="user-info">
+						<a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10046166">
+							<span class="head-wrap" data-userid="10046166">
+
+																	<img class="avator v-center" src="https://cs.xinpianchang.com/Upload/user/2017/08/095989fc56bb848.jpeg@40w_40h_1e_1c">
+																			<span class="author-v yellow-v"></span>
+
+
+							</span>
+							<span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+																	大米															</span>
+						</a>
+						<span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">摄影指导</span>
+						<!--  -->
+											</div>
+				</div>
+			</li>
+            <li class="enter-filmplay" data-articleid="10221287" data-videourl="ArticleList">
+    <a class="video-cover" href="javascript:;">
+        <img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/17/5afcfae5e064e.jpeg@540w_324h_1e_1c.jpg">
+        <span class="duration fs_12">02' 00''</span>
+        <div class="video-cover-con">
+            <div class="video-mark">
+                                                                                <span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+                                                                            <div class="list-tags">
+                                                                                </div>
+            </div>
+            <!-- <p class="fs_12"> - </p> -->
+        </div>
+        <div class="video-hover-con">
+            <div class="fs_12 fw_300 c_w_f desc line-hide-3">Agency:BBDO Beijing
+Director:Dave Meyers
+VFX Supervisor:Barry Greaves
+VFX Supervisor (CG):Christian Kalata
+VFX Producer:Rachel Zhao
+Grade:MPC
+Colourist:Vincent Taylor
+
+VFX Team:
+Iman Javaherypour
+Madhuka Gunasekera
+Joseph Tsang
+Franki...</div>
+            <p class="fs_12">2018-05-17 发布</p>
+        </div>
+    </a>
+    <div class="video-con">
+        <div class="video-con-top">
+            <a href="javascript:;">
+                <p class="fs_14 fw_600 c_b_3 line-hide-1">Mercedes Brand</p>
+            </a>
+            <div class="new-cate">
+                <span class="fs_12 fw_300 c_b_9">
+                                            广告 - 汽车							</span>
+                                        </div>
+            <div class="video-view fs_12 fw_300 c_b_9">
+                <span class="fw_300 icon-play-volume">868</span>
+                <span class="fw_300 c_b_9 icon-like">53</span>
+            </div>
+        </div>
+        <div class="user-info">
+            <a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10331345">
+                <span class="head-wrap" data-userid="10331345">
+
+                                                        <img class="avator v-center" src="https://oss-xpc0.xpccdn.com/Upload/user/2018/05/165afbaba59161c.jpeg">
+                                                                <span class="author-v blue-v"></span>
+
+
+                </span>
+                <span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+                                                        MPC															</span>
+            </a>
+            <span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">制作方／动画师／调色／特效</span>
+            <!--  -->
+                                </div>
+    </div>
+</li>
+            <li class="enter-filmplay" data-articleid="70398" data-videourl="ArticleList">
+				<a class="video-cover" href="javascript:;">
+					<img class="lazy-img" _src="http://cs.xinpianchang.com/uploadfile/article/2018/05/11/5af542c81f0fe.jpeg@540w_324h_1e_1c.jpg">
+					<span class="duration fs_12">04' 13''</span>
+					<div class="video-cover-con">
+						<div class="video-mark">
+																							<span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+																						<div class="list-tags">
+																							</div>
+						</div>
+						<!-- <p class="fs_12"> - </p> -->
+					</div>
+					<div class="video-hover-con">
+						<div class="fs_12 fw_300 c_w_f desc line-hide-3"></div>
+						<p class="fs_12">2017-07-02 发布</p>
+					</div>
+				</a>
+				<div class="video-con">
+					<div class="video-con-top">
+						<a href="javascript:;">
+							<p class="fs_14 fw_600 c_b_3 line-hide-1">飘柔－勇敢爱</p>
+						</a>
+						<div class="new-cate">
+							<span class="fs_12 fw_300 c_b_9">
+														广告 - 其他							</span>
+													</div>
+						<div class="video-view fs_12 fw_300 c_b_9">
+							<span class="fw_300 icon-play-volume">3263</span>
+							<span class="fw_300 c_b_9 icon-like">94</span>
+						</div>
+					</div>
+					<div class="user-info">
+						<a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10013904">
+							<span class="head-wrap" data-userid="10013904">
+
+																	<img class="avator v-center" src="https://oss-xpc0.xpccdn.com/Upload/user/2018/01/225a64cfe83fef3.jpeg">
+																			<span class="author-v yellow-v"></span>
+
+
+							</span>
+							<span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">
+																	承孝杰															</span>
+						</a>
+						<span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">导演</span>
+						<!--  -->
+											</div>
+				</div>
+			</li>
+        </ul>
+		<div class="page-wrap">
+			<div class="page">
+                <span class="current">1</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2">2</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-3">3</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-4">4</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5">5</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-6">6</a>
+                <span class="page-points">...</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5263" title="尾页">5263</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2" title="下一页">
+                <span class="arrow-page icon-arrow-right"></span></a></div>
+		</div>
+	</div>
+</div>
+
+
+<script src="{% static 'all_raider/js/artDialog.min.js' %}"></script>
+<script src="{% static 'all_raider/js/artDialog.plugins.min.js' %}"></script>
+<!-- <script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
+</body>
+</html>

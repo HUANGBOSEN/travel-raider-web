@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<style>
+    .line-hide-1{overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+    .hothover:hover{color: #999!important;}
+    .channel-container{padding-top: 40px;}
+</style>
+<link rel="stylesheet" href="{% static 'all_raider/css/font-icon.css' %}">
+<link rel="stylesheet" href="{% static 'all_raider/css/common.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="channel-container">
+	<!-- 通栏广告 -->
+	<a class="create-man-banner" href="#" target="_blank"><img src="/static/travel1/img/placeholder_leaderboard.jpg"></a>
+	<div class="choose-bar-v3">
+		<div class="choose-bar-top">
+			<ul class="first-type fs_12 c_b_3 fw_300 clearfix">
+				<li class="selected"><a href="javascript:;">全部攻略</a></li>
+                <li ><a href="#">中国</a></li>
+                <li ><a href="#">美国</a></li>
+                <li ><a href="#">英国</a></li>
+                <li ><a href="#">法国</a></li>
+                <li ><a href="#">俄罗斯</a></li>
+                <li ><a href="#">日本</a></li>
+                <li ><a href="#">德国</a></li>
+                <li ><a href="#">意大利</a></li>
+                <li ><a href="#">泰国</a></li>
+                <li ><a href="#">印度</a></li>
+                <li ><a href="#">韩国</a></li>
+                <li ><a href="#">加拿大</a></li>
+                <li ><a href="#">澳大利亚</a></li>
+                <!-- <li ><a href="http://www.xinpianchang.com/channel/index/type-vr/sort-like?from=articleListPage">VR</a></li> -->
+			</ul>
+        </div>
+		<div class="choose-bar-bottom clearfix">
+			<ul class="sort-type fs_12 fw_300 c_b_3 clearfix">
+				<li class="selected"><a class="icon-hot" href="javascript:;" raider_type="like_counts">热门</a></li>
+{#				<li ><a class="icon-choice" href="#" raider_type="create_at">精选</a></li>#}
+				<li ><a class="icon-time" href="#" raider_type="created_at">最新</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="channel-con">
+		<ul class="raider-list">
+            <li class="enter-filmplay" data-articleid="90395" data-videourl="ArticleList">
+				<a href="/travel/raider?rid=22" class="video-cover">
+					<img class="lazy-img lazy-img-show" _src src="/media/cover/2018/05/16/1234.jpg">
+					<span class="duration fs_12">08' 48''</span>
+					<div class="video-cover-con">
+						<div class="video-mark">
+                            <span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span>
+                            <div class="list-tags"></div>
+						</div>
+						<!-- <p class="fs_12"> - </p> -->
+					</div>
+					<div class="video-hover-con">
+						<div class="fs_12 fw_300 c_w_f desc line-hide-3">73人团队，23天堪景，34天全程拍摄，2000人参与演出，21天后期制作，24个剪辑版本，历时5个月创作完成，每一个画面都凝聚创作者的心血。感谢贵州省政府领导和制作公司天马传媒给了创作者极大的信任和创作空间，才能向大家呈现一个美丽多彩的贵州。</div>
+						<p class="fs_12">2017-10-02 发布</p>
+					</div>
+				</a>
+				<div class="video-con">
+					<div class="video-con-top">
+						<a href="/travel/raider?rid=22"><p class="fs_14 fw_600 c_b_3 line-hide-1">贵州省旅游形象片8min</p></a>
+						<div class="new-cate">
+                            <span class="fs_12 fw_300 c_b_9">宣传片 - 国家城市	</span>
+                        </div>
+						<div class="video-view fs_12 fw_300 c_b_9">
+							<span class="fw_300 icon-play-volume">82.2w</span>
+							<span class="fw_300 c_b_9 icon-like">18166</span>
+						</div>
+					</div>
+					<div class="user-info">
+						<a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10046166">
+							<span class="head-wrap" data-userid="10046166">
+                                <img class="avator v-center" src="https://cs.xinpianchang.com/Upload/user/2017/08/095989fc56bb848.jpeg@40w_40h_1e_1c">
+                                <span class="author-v yellow-v"></span>
+                            </span>
+							<span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">大米</span>
+						</a>
+						<span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">作者</span>
+						<!--  -->
+                    </div>
+				</div>
+			</li>
+        </ul>
+		<div class="page-wrap">
+			<div class="page">
+                <span class="current">1</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2">2</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-3">3</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-4">4</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5">5</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-6">6</a>
+                <span class="page-points">...</span>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-5263" title="尾页">5263</a>
+                <a href="http://www.xinpianchang.com/channel/index/type-0/sort-like/duration_type-0/resolution_type-/page-2" title="下一页">
+                <span class="arrow-page icon-arrow-right"></span></a></div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block foot_js %}
+    <script>
+        //动态生成主页攻略的html
+        function get_html(data) {
+            var ohtml = '<li class="enter-filmplay"><a href="{% url 'travel:raider' %}?rid='+data.rid+'" class="video-cover" href="javascript:;"><img class="lazy-img lazy-img-show" _src src="'+data.thumbnail+'"><div class="video-cover-con"><div class="video-mark"><span class="pick square"><svg width="24" height="24" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="web切片" transform="translate(-911.000000, -490.000000)"><g id="Group" transform="translate(911.000000, 490.000000)"><circle id="Oval-8" fill="#000000" cx="30" cy="30" r="30"></circle><polygon id="Rectangle-7-Copy" fill="#F7F7F7" points="21.5625 17.8125 38.4375 17.8125 38.4375 42.1875 30 35.5397727 21.5625 42.1875"></polygon></g></g></g></svg></span><div class="list-tags"></div></div></div><div class="video-hover-con"><div class="fs_12 fw_300 c_w_f desc line-hide-3">'+data.description+'</div><p class="fs_12">'+data.created_at+'</p></div></a><div class="video-con"><div class="video-con-top"><a href="{% url 'travel:raider' %}?rid='+data.rid+'"><p class="fs_14 fw_600 c_b_3 line-hide-1">'+data.title+'</p></a><div class="new-cate"><span class="fs_12 fw_300 c_b_9">'+data.city+'</span></div><div class="video-view fs_12 fw_300 c_b_9"><span class="fw_300 icon-play-volume">82.2w</span><span class="fw_300 c_b_9 icon-like">'+data.like_counts+'</span></div></div><div class="user-info"><a class="user-link v-center enter-creator-space" href="javascript:;" data-userid="10046166"><span class="head-wrap"><img class="avator v-center" src="'+data.from_uavatar+'"><span class="author-v yellow-v"></span></span><span class="name fs_12 fw_300 c_b_3 v-center line-hide-1">'+data.from_uname+'</span></a><span class="role fs_12 fw_300 c_b_9 v-center line-hide-1">作者</span></div></div></li>';
+            return ohtml
+        }
+        //将动态生成的html添加到页面
+        function add_html(data,keng) {
+            keng.html('');
+            for(var i=0;i<data.length;i++){
+                var new_all_raider = data[i];
+                var new_all_raider_html = get_html(new_all_raider);
+                keng.prepend(new_all_raider_html);
+            }
+        }
+        $.get("{% url 'travel:raider_list' %}",function(data){
+            add_html(data.hot_all_raiders,$('.raider-list'));
+        });
+
+
+
+        $('.first-type li').click(function () {
+            var othis = $(this);
+            $('.first-type li').removeAttr('class','selected');
+            othis.attr('class','selected');
+            var country = othis.find('a').html();
+            var raiders_type = $('.sort-type').find('.selected').find('a').attr('raider_type');
+            $.get("{% url 'travel:raider_type_list' %}?country="+country+"&raiders_type="+raiders_type+"",function(data){
+                add_html(data.raiders,$('.raider-list'));
+            });
+        });
+
+        $('.sort-type li').click(function () {
+            var othis = $(this);
+            $('.sort-type li').removeAttr('class','selected');
+            $(this).attr('class','selected');
+            var country = $('.first-type').find('.selected').find('a').html();
+            var raiders_type = othis.find('a').attr('raider_type');
+            $.get("{% url 'travel:raider_type_list' %}?country="+country+"&raiders_type="+raiders_type+"",function(data){
+                add_html(data.raiders,$('.raider-list'));
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,1139 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'travel1/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'travel1/css/comment.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <div class="flex-parent align-items-center">
+
+          <!-- Logo -->
+          <a href="index.html" class="logo d-none d-lg-block">
+            <img class="logo__img" src="/static/travel1/img/logo.png" srcset="/static/travel1/img/logo.png 1x, /static/travel1/img/logo@2x.png 2x" alt="logo">
+          </a>
+
+          <!-- Ad Banner 728 -->
+          <div class="text-center">
+            <a href="#">
+              <img src="/static/travel1/img/placeholder_leaderboard.jpg" alt="">
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- end header -->
+
+    <div class="main-container container" id="main-container">
+
+      <!-- Content -->
+      <div class="row">
+
+        <!-- post content -->
+        <div class="col-lg-8 blog__content mb-30">
+
+          <!-- Breadcrumbs -->
+          <ul class="breadcrumbs">
+            <li class="breadcrumbs__item">
+              <a href="{% url 'travel:home' %}" class="breadcrumbs__url"><i class="ui-home"></i></a>
+            </li>
+            <li class="breadcrumbs__item">
+              <a href="index.html" class="breadcrumbs__url">攻略</a>
+            </li>
+{#            <li class="breadcrumbs__item breadcrumbs__item--current">#}
+{#              World#}
+{#            </li>#}
+          </ul>
+
+          <!-- standard post -->
+          <article class="entry">
+
+            <div class="single-post__entry-header entry__header">
+{#              <a href="#" class="entry__meta-category">World</a>#}
+              <h1 class="single-post__entry-title">
+                {{ raider.title }}
+              </h1>
+
+              <ul class="entry__meta">
+                <li class="entry__meta-author">
+                  <i class="ui-author"></i>
+                  <a href="#">{{ raider_user.name }}</a>
+                </li>
+                <li class="entry__meta-date">
+                  <i class="ui-date"></i>
+                  {{ raider.created_at }}
+                </li>
+                <li class="entry__meta-comments">
+                  <i class="ui-comments"></i>
+                  <a href="#">115</a>
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="entry__article" id="raider_content">
+{#                这里显示富文本内容#}
+                {% autoescape off %}
+                    {{ raider.content }}
+                {% endautoescape %}
+            </div>
+          <!-- end entry article -->
+
+
+            <!-- Author -->
+            <div class="title-wrap mt-40">
+              <h5 class="uppercase">关于作者</h5>
+            </div>
+            <div class="entry-author clearfix">
+              <img alt="" data-src="img/blog/author_large.jpg" src="img/empty.png" class="avatar lazyload">
+              <div class="entry-author__info">
+                <h6 class="entry-author__name">
+                  <a href="#">{{ raider_user.name }}</a>
+                </h6>
+                <p class="mb-0">But unfortunately for most of us our role as gardener has never been explained to us. And in misunderstanding our role, we have allowed seeds of all types, both good and bad, to enter our inner garden.</p>
+              </div>
+            </div>
+
+
+            <!-- Related Posts -->
+            <div class="related-posts">
+              <div class="title-wrap mt-40">
+                <h5 class="uppercase">Related Posts</h5>
+              </div>
+              <div class="row row-20">
+                <div class="col-md-4">
+                  <article class="entry">
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-75">
+                          <img data-src="img/blog/carousel_img_1.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title entry__title--sm">
+                          <a href="single-post.html">Satelite cost tens of millions or even hundreds of millions of dollars to build</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="entry">
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-75">
+                          <img data-src="img/blog/carousel_img_2.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title entry__title--sm">
+                          <a href="single-post.html">Satelite cost tens of millions or even hundreds of millions of dollars to build</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="entry">
+                    <div class="entry__img-holder">
+                      <a href="single-post.html">
+                        <div class="thumb-container thumb-75">
+                          <img data-src="img/blog/carousel_img_3.jpg" src="img/empty.png" class="entry__img lazyload" alt="">
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="entry__body">
+                      <div class="entry__header">
+                        <h2 class="entry__title entry__title--sm">
+                          <a href="single-post.html">Satelite cost tens of millions or even hundreds of millions of dollars to build</a>
+                        </h2>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          <!-- end related posts -->
+
+          </article>
+        <!-- end standard post -->
+
+
+          <!-- Comments -->
+          <div class="commentAll">
+                <!--评论区域 begin-->
+                <div class="reviewArea clearfix">
+                    <textarea class="content comment-input" placeholder="请输入您的评论&hellip;" onkeyup="keyUP(this)"></textarea>
+                    <a href="javascript:;" class="plBtn">评论</a>
+                </div>
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show" id="comment-show">
+                    <div class="comment-show-con clearfix">
+                        <div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div>
+                        <div class="comment-show-con-list pull-left clearfix">
+                            <div class="pl-text clearfix">
+                                <a href="#" class="comment-size-name">张三 : </a>
+                                <span class="my-pl-con">&nbsp;来啊 造作啊!</span>
+                            </div>
+                            <div class="date-dz">
+                                <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
+                                <div class="date-dz-right pull-right comment-pl-block">
+                                    <a href="javascript:;" class="removeBlock">删除</a>
+                                    <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                    <span class="pull-left date-dz-line">|</span>
+                                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                </div>
+                            </div>
+                            <div class="hf-list-con"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="get_comments">&#8595; 点击获取更多 &#8595;</div>
+                <div id="no_comments">没有更多评论</div>
+                <!--回复区域 end-->
+            </div>
+        <!-- end comments -->
+
+        </div>
+      <!-- end col -->
+
+        <!-- Sidebar -->
+        <aside class="col-lg-4 sidebar sidebar--right">
+
+          <!-- Widget Social Subscribers -->
+          <div class="widget widget-social-subscribers">
+            <ul class="widget-social-subscribers__list">
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--facebook">
+                  <i class="ui-facebook widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Fans</span>
+                </a>
+              </li>
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--twitter">
+                  <i class="ui-twitter widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Followers</span>
+                </a>
+              </li>
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--google">
+                  <i class="ui-google widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Followers</span>
+                </a>
+              </li>
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--rss">
+                  <i class="ui-rss widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Subscribers</span>
+                </a>
+              </li>
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--youtube">
+                  <i class="ui-youtube widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Subscribers</span>
+                </a>
+              </li>
+              <li class="widget-social-subscribers__item">
+                <a href="#" class="widget-social-subscribers__url widget-social-subscribers--instagram">
+                  <i class="ui-instagram widget-social-subscribers__icon"></i>
+                  <span class="widget-social-subscribers__number">15369</span>
+                  <span class="widget-social-subscribers__text">Followers</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Widget Newsletter -->
+          <div class="widget widget_mc4wp_form_widget">
+            <h4 class="widget-title">Subscribe for news</h4>
+            <form class="mc4wp-form" method="post">
+              <div class="mc4wp-form-fields">
+                <p>
+                  <input type="email" name="EMAIL" placeholder="Your email" required="">
+                </p>
+                <p>
+                  <input type="submit" class="btn btn-lg btn-color" value="Subscribe">
+                </p>
+              </div>
+            </form>
+          </div> <!-- end widget newsletter -->
+
+          <!-- Widget Popular/Latest Posts -->
+          <div class="widget widget-tabpost">
+            <div class="tabs widget-tabpost__tabs">
+              <ul class="tabs__list widget-tabpost__tabs-list">
+                <li class="tabs__item widget-tabpost__tabs-item tabs__item--active">
+                  <a href="#tab-trending" class="tabs__url tabs__trigger widget-tabpost__tabs-url">Trending</a>
+                </li>
+                <li class="tabs__item widget-tabpost__tabs-item">
+                  <a href="#tab-latest" class="tabs__url tabs__trigger widget-tabpost__tabs-url">Latest</a>
+                </li>
+                <li class="tabs__item widget-tabpost__tabs-item">
+                  <a href="#tab-comments" class="tabs__url tabs__trigger widget-tabpost__tabs-url">Comments</a>
+                </li>
+              </ul> <!-- end tabs -->
+
+              <!-- tab content -->
+              <div class="tabs__content tabs__content-trigger widget-tabpost__tabs-content">
+
+                <div class="tabs__content-pane tabs__content-pane--active" id="tab-trending">
+                  <ul class="post-list-small">
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_1.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">Google is fixing its troubling burger emoji in Android 8.1</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_2.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">How Meditation Can Transform Your Business</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_3.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">June in Africa: Taxi wars, smarter cities and increased investments</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_4.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">PUBG Desert Map Finally Revealed, Here Are All The Details</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tabs__content-pane" id="tab-latest">
+                  <ul class="post-list-small">
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_2.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">How Meditation Can Transform Your Business</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_1.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">Google is fixing its troubling burger emoji in Android 8.1</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_3.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">June in Africa: Taxi wars, smarter cities and increased investments</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_4.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">PUBG Desert Map Finally Revealed, Here Are All The Details</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tabs__content-pane" id="tab-comments">
+                  <ul class="post-list-small">
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_3.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">June in Africa: Taxi wars, smarter cities and increased investments</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_1.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">Google is fixing its troubling burger emoji in Android 8.1</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_2.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">How Meditation Can Transform Your Business</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                    <li class="post-list-small__item">
+                      <article class="post-list-small__entry clearfix">
+                        <div class="post-list-small__img-holder">
+                          <div class="thumb-container thumb-75">
+                            <a href="single-post.html">
+                              <img data-src="img/blog/popular_post_4.jpg" src="img/empty.png" alt="" class=" lazyload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="post-list-small__body">
+                          <h3 class="post-list-small__entry-title">
+                            <a href="single-post.html">PUBG Desert Map Finally Revealed, Here Are All The Details</a>
+                          </h3>
+                          <ul class="entry__meta">
+                            <li class="entry__meta-date">
+                              <i class="ui-date"></i>
+                              21 October, 2017
+                            </li>
+                          </ul>
+                        </div>
+                      </article>
+                    </li>
+                  </ul>
+                </div>
+
+              </div> <!-- end tab content -->
+            </div> <!-- end tabs -->
+          </div> <!-- end widget popular/latest posts -->
+
+          <!-- Widget Ad 300 -->
+          <div class="widget widget_media_image">
+            <a href="#">
+              <img src="img/blog/placeholder_300.jpg" alt="">
+            </a>
+          </div> <!-- end widget ad 300 -->
+
+          <!-- Widget Socials -->
+          <div class="widget widget-socials">
+            <h4 class="widget-title">Follow us</h4>
+            <div class="socials">
+              <a class="social social-facebook social--large" href="#" title="facebook" target="_blank" aria-label="facebook">
+                <i class="ui-facebook"></i>
+              </a><!--
+              --><a class="social social-twitter social--large" href="#" title="twitter" target="_blank" aria-label="twitter">
+                <i class="ui-twitter"></i>
+              </a><!--
+              --><a class="social social-google-plus social--large" href="#" title="google" target="_blank" aria-label="google">
+                <i class="ui-google"></i>
+              </a><!--
+              --><a class="social social-instagram social--large" href="#" title="instagram" target="_blank" aria-label="instagram">
+                <i class="ui-instagram"></i>
+              </a><!--
+              --><a class="social social-youtube social--large" href="#" title="youtube" target="_blank" aria-label="youtube">
+                <i class="ui-youtube"></i>
+              </a><!--
+              --><a class="social social-rss social--large" href="#" title="rss" target="_blank" aria-label="rss">
+                <i class="ui-rss"></i>
+              </a>
+            </div>
+          </div> <!-- end widget socials -->
+
+          <!-- Widget Twitter -->
+          <div class="widget">
+            <h4 class="widget-title">Our tweets</h4>
+            <div class="tweets-container">
+              <div id="tweets"></div>
+            </div>
+          </div>
+
+          <!-- Widget Ad 125 -->
+          <div class="widget widget-gallery-sm">
+            <ul class="widget-gallery-sm__list">
+              <li class="widget-gallery-sm__item">
+                <a href="#"><img src="img/blog/placeholder_125.jpg" alt=""></a>
+              </li>
+              <li class="widget-gallery-sm__item">
+                <a href="#"><img src="img/blog/placeholder_125.jpg" alt=""></a>
+              </li>
+              <li class="widget-gallery-sm__item">
+                <a href="#"><img src="img/blog/placeholder_125.jpg" alt=""></a>
+              </li>
+              <li class="widget-gallery-sm__item">
+                <a href="#"><img src="img/blog/placeholder_125.jpg" alt=""></a>
+              </li>
+            </ul>
+          </div> <!-- end widget ad 300 -->
+
+          <!-- Widget Carousel -->
+          <div class="widget">
+            <h4 class="widget-title">Featured Posts</h4>
+            <div id="owl-single" class="owl-carousel owl-theme">
+
+              <article class="entry">
+                <div class="entry__img-holder mb-0">
+                  <a href="single-post.html">
+                    <div class="thumb-bg-holder">
+                      <img data-src="img/blog/featured_post_img_1.jpg" src="img/blog/featured_post_img_1.jpg" class="entry__img owl-lazy" alt="">
+                      <div class="bottom-gradient"></div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="thumb-text-holder">
+                  <h2 class="thumb-entry-title thumb-entry-title--sm">
+                    <a href="single-post.html">Myanmar little monk reading book outside monastery</a>
+                  </h2>
+                </div>
+              </article>
+
+              <article class="entry">
+                <div class="entry__img-holder mb-0">
+                  <a href="single-post.html">
+                    <div class="thumb-bg-holder">
+                      <img data-src="img/blog/featured_post_img_2.jpg" src="img/blog/featured_post_img_2.jpg" class="entry__img owl-lazy" alt="">
+                      <div class="bottom-gradient"></div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="thumb-text-holder">
+                  <h2 class="thumb-entry-title thumb-entry-title--sm">
+                    <a href="single-post.html">Spectacular display of northern lights illuminates sky</a>
+                  </h2>
+                </div>
+              </article>
+
+
+            </div>
+          </div>
+
+          <!-- Latest Reviews -->
+          <div class="widget widget-reviews">
+            <h4 class="widget-title">Latest Reviews</h4>
+            <ul class="post-list-small">
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-75">
+                      <a href="single-post.html">
+                        <img data-src="img/blog/review_post_1.jpg" src="img/blog/review_post_1.jpg" alt="" class=" lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">My First Impressions of iPhone X</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-rating">
+                        <i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star-outline"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-75">
+                      <a href="single-post.html">
+                        <img data-src="img/blog/review_post_2.jpg" src="img/empty.png" alt="" class=" lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">The Best Laptops for Kids</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-rating">
+                        <i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star-outline"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-75">
+                      <a href="single-post.html">
+                        <img data-src="img/blog/review_post_3.jpg" src="img/empty.png" alt="" class=" lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">PS4 Joypads Pre-Orders Start Friday in NYC</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-rating">
+                        <i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star-outline"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </li>
+              <li class="post-list-small__item">
+                <article class="post-list-small__entry clearfix">
+                  <div class="post-list-small__img-holder">
+                    <div class="thumb-container thumb-75">
+                      <a href="single-post.html">
+                        <img data-src="img/blog/review_post_4.jpg" src="img/empty.png" alt="" class=" lazyload">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="post-list-small__body">
+                    <h3 class="post-list-small__entry-title">
+                      <a href="single-post.html">Hands on: Parrot AR Drone 2.0 review</a>
+                    </h3>
+                    <ul class="entry__meta">
+                      <li class="entry__meta-rating">
+                        <i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star"></i><!--
+                        --><i class="ui-star-outline"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Widget Tags -->
+          <div class="widget widget_tag_cloud">
+            <h4 class="widget-title">Tags</h4>
+            <div class="tagcloud">
+              <a href="#">Magazine</a>
+              <a href="#">Creative</a>
+              <a href="#">Responsive</a>
+              <a href="#">Modern</a>
+              <a href="#">Tech</a>
+              <a href="#">WordPress</a>
+              <a href="#">Website</a>
+              <a href="#">News</a>
+            </div>
+          </div>
+
+        </aside> <!-- end sidebar -->
+
+      </div> <!-- end content -->
+    </div> <!-- end main container -->
+
+{% endblock %}
+
+
+{% block foot_js %}
+<script type="text/javascript" src="{% static 'travel1/js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'travel1/js/jquery.flexText.js' %}"></script>
+
+<!--textarea高度自适应-->
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>f
+<!--textarea限制字数-->
+<script type="text/javascript">
+    function keyUP(t){
+        var len = $(t).val().length;
+        if(len > 139){
+            $(t).val($(t).val().substring(0,140));
+        }
+    }
+</script>
+<!--初始页面获取评论-->
+<script type="text/javascript">
+    var page=1;
+    $(document).ready(function (){
+         $.get("{% url 'travel:get_comment' %}?rid={{ raider.rid }}&page="+page+"",function(data){
+            if(data.comments.length<8){
+                $("#get_comments").attr('id','rm_get_comments')　&&　$("#no_comments").css('display','block');
+            }
+            for(var i=0;i<data.comments.length;i++){
+                var comment = data.comments[i];
+                if(comment.reply_num==0){
+                    oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="'+comment.from_avatar+'" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">'+comment.from_uname+' : </a> <span class="my-pl-con">&nbsp;'+ comment.content +'</span> </div> <div class="date-dz"><div class="transfer_data"><p class="comment_id">'+comment.comment_id+'</p><p class="comment_from_uid">'+comment.from_uid+'</p></div><span class="date-dz-left pull-left comment-time">'+comment.created_at+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">'+comment.comment_like_num+'</i>)</a> </div></div><div class="hf-list-con"></div></div></div>';
+                }else {
+                    oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="'+comment.from_avatar+'" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">'+comment.from_uname+' : </a> <span class="my-pl-con">&nbsp;'+ comment.content +'</span> </div> <div class="date-dz"><div class="transfer_data"><p class="comment_id">'+comment.comment_id+'</p><p class="comment_from_uid">'+comment.from_uid+'</p></div><span class="date-dz-left pull-left comment-time">'+comment.created_at+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">'+comment.comment_like_num+'</i>)</a> </div></div><div class="hf-list-con"></div></div> <div class="get_more">展开&#9698;</div></div>';
+                }
+                $('#comment-show').prepend(oHtml);
+                $('#comment-show').siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
+            }
+          });
+     });
+<!--点击获取更多评论-->
+    $("#get_comments").click(function(){
+        page=page+1;
+        $.get("{% url 'travel:get_comment' %}?rid={{ raider.rid }}&page="+page+"",function(data){
+            if(data.comments.length<8){
+                $("#get_comments").attr('id','rm_get_comments')　&&　$("#no_comments").css('display','block');
+            }
+            for(var i=0;i<data.comments.length;i++){
+                var comment = data.comments[i];
+                if(comment.reply_num==0){
+                    oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">'+comment.from_uname+' : </a> <span class="my-pl-con">&nbsp;'+ comment.content +'</span> </div> <div class="date-dz"><div class="transfer_data"><p class="comment_id">'+comment.comment_id+'</p><p class="comment_from_uid">'+comment.from_uid+'</p></div><span class="date-dz-left pull-left comment-time">'+comment.created_at+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div></div><div class="hf-list-con"></div></div></div>';
+                }else {
+                    oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">'+comment.from_uname+' : </a> <span class="my-pl-con">&nbsp;'+ comment.content +'</span> </div> <div class="date-dz"><div class="transfer_data"><p class="comment_id">'+comment.comment_id+'</p><p class="comment_from_uid">'+comment.from_uid+'</p></div><span class="date-dz-left pull-left comment-time">'+comment.created_at+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div></div><div class="hf-list-con"></div></div> <div class="get_more">展开&#9698;</div></div>';
+                }
+                $('#comment-show').prepend(oHtml);
+                $('#comment-show').siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
+            }
+        });
+    });
+<!--点击展开获取回复-->
+    $('.comment-show').on('click','.get_more',function(){
+        oThis=$(this);
+        var comment_id = $(this).parents('.comment-show-con').find('.comment_id').html();
+        $(this).attr("class","rm_get_more");
+        $.get("{% url 'travel:get_reply' %}?comment_id="+comment_id+"",function(data){
+            for(var i=0;i<data.replys.length;i++){
+                var reply = data.replys[i];
+                var oAt = '回复<a href="#" class="atName">@'+reply.to_uname+'</a> : '+reply.content;
+                var oHtml1 = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">'+reply.from_uname+' : </a><span class="my-pl-con">'+oAt+'</span></div><div class="date-dz"><div class="transfer_data"><p class="reply_id">'+reply.reply_id+'</p><p class="comment_id">'+reply.comment_id+'</p><p class="comment_from_uid">{{ user.uid }}</p></div><span class="date-dz-left pull-left comment-time">'+reply.created_at+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">'+reply.reply_like_num+'</i>)</a> </div> </div></div>';
+                oThis.parents('.comment-show-con').find('.hf-list-con').css('display','block').prepend(oHtml1);
+            }
+        });
+    });
+
+    <!--点击评论创建评论条-->
+    $('.commentAll').on('click','.plBtn',function(){
+        if(check()){
+            var oThis = $(this);
+            $.ajax({
+                type: "POST",
+                url: '{% url 'travel:add_comment' %}',
+                data: {rid:{{ raider.rid }},content:$(".content").val(),csrfmiddlewaretoken: '{{ csrf_token }}'},
+                dataType:'json',
+                cache: false,
+                success: function(data){
+                    if("error" == data.result){
+                        window.location.href="{% url 'travel:login' %}";
+                    }else if('success' == data.result){
+                        var myDate = new Date();
+                        //获取当前年
+                        var year=myDate.getFullYear();
+                        //获取当前月
+                        var month=myDate.getMonth()+1;
+                        //获取当前日
+                        var date=myDate.getDate();
+                        var h=myDate.getHours();       //获取当前小时数(0-23)
+                        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+                        if(m<10) m = '0' + m;
+                        var s=myDate.getSeconds();
+                        if(s<10) s = '0' + s;
+                        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+                        //获取输入内容
+                        var oSize = oThis.siblings('.flex-text-wrap').find('.comment-input').val();
+                        console.log(oSize);
+                        //动态创建评论模块
+                        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="/media/{{ user.avatar }}" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">{{ user.name }} : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+                        if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
+                            oThis.parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
+                            oThis.siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
+                        }
+                    }
+                }
+            });
+        }
+
+    });
+
+    //客户端校验
+    function check(){
+        if ($(".content").val() == "") {
+            {#alert('评论不能为空');#}
+            return false;
+        }
+        return true;
+    };
+</script>
+
+<!--点击回复动态创建回复块-->
+<script type="text/javascript">
+    $('.comment-show').on('click','.pl-hf',function(){
+        //获取回复人的名字
+        var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
+        //回复@
+        var fhN = '回复@'+fhName;
+        //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
+        var fhHtml = '<div class="hf-con pull-left"> <textarea class="content comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
+        //显示回复
+        if($(this).is('.hf-con-block')){
+            $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
+            $(this).removeClass('hf-con-block');
+            $('.content').flexText();
+            $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding','6px 15px');
+            //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
+            //input框自动聚焦
+            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
+        }else {
+            $(this).addClass('hf-con-block');
+            $(this).parents('.date-dz-right').siblings('.hf-con').remove();
+        }
+    });
+</script>
+<!--评论回复块创建-->
+<script type="text/javascript">
+    $('.comment-show').on('click','.hf-pl',function(){
+        var oThis = $(this);
+        var myDate = new Date();
+        //获取当前年
+        var year=myDate.getFullYear();
+        //获取当前月
+        var month=myDate.getMonth()+1;
+        //获取当前日
+        var date=myDate.getDate();
+        var h=myDate.getHours();       //获取当前小时数(0-23)
+        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+        if(m<10) m = '0' + m;
+        var s=myDate.getSeconds();
+        if(s<10) s = '0' + s;
+        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+        //获取输入内容
+        var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
+        var comment_id = $(this).parents('.date-dz').find('.comment_id').html();
+        var comment_from_uid = $(this).parents('.date-dz').find('.comment_from_uid').html();
+        console.log(oHfVal);
+        var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
+        var oAllVal = '回复@'+oHfName;
+        if(oHfVal.replace(/^ +| +$/g,'') == '' || oHfVal == oAllVal){
+
+        }else {
+            $.getJSON("{% static 'travel1/json/pl.json' %}",function(data){
+                var oAt = '';
+                var oHf = '';
+                $.each(data,function(n,v){
+                    delete v.hfContent;
+                    delete v.atName;
+                    var arr;
+                    var ohfNameArr;
+                    var content='';
+                    if(oHfVal.indexOf("@") == -1){
+                        data['atName'] = '';
+                        data['hfContent'] = oHfVal;
+                    }else {
+                        arr = oHfVal.split(':');
+                        ohfNameArr = arr[0].split('@');
+                        for(var i =1;i<arr.length;i++){
+                            content=content+arr[i]
+                        }
+                        data['hfContent'] = content;
+                        data['atName'] = ohfNameArr[1];
+                    }
+
+                    if(data.atName == ''){
+                        oAt = data.hfContent;
+                    }else {
+                        oAt = '回复<a href="#" class="atName">@'+data.atName+'</a> : '+data.hfContent;
+                    }
+                    oHf = data.hfName;
+
+                    $.ajax({
+                        type: "POST",
+                        url: '{% url 'travel:add_reply' %}',
+                        data: {comment_id:comment_id,comment_from_uid:comment_from_uid,content:content,csrfmiddlewaretoken: '{{ csrf_token }}'},
+                        dataType:'json',
+                        cache: false,
+                        success: function(data){
+                            if("success" == data.result){
+                                var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">{{ user.name }} : </a><span class="my-pl-con">'+oAt+'</span></div><div class="date-dz"><div class="transfer_data"><p class="comment_id">'+comment_id+'</p><p class="comment_from_uid">{{ user.uid }}</p></div><span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div></div>';
+                                oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display','block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
+                            }else if("error" == data.result){
+                                window.location.href="{% url 'travel:login' %}";
+                            }
+                        }
+                    });
+                });
+            });
+
+        }
+    });
+</script>
+
+<!--删除评论块-->
+<script type="text/javascript">
+    $('.commentAll').on('click','.removeBlock',function(){
+        var comment_id = $(this).parents('.date-dz').find('.comment_id').html();
+        var reply_id = $(this).parents('.date-dz').find('.reply_id').html();
+        var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
+        var bT = $(this);
+        if(reply_id){
+            if({{ user.uid }} == {{ raider_user.uid }}){
+                $.get("{% url 'travel:del_reply' %}?reply_id="+reply_id+"",function(data) {
+                    if (data.result == "success") {
+                        if (oT.siblings('.all-pl-con').length >= 1) {
+                            oT.remove();
+                        } else {
+                            bT.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none');
+                            oT.remove();
+                        }
+                        bT.parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+                    }
+                });
+            }else {
+                console.log('没有权限');
+            }
+        }else {
+            if({{ user.uid }} == {{ raider_user.uid }}){
+                $.get("{% url 'travel:del_comment' %}?comment_id="+comment_id+"",function(data) {
+                    if (data.result == "success") {
+                        if (oT.siblings('.all-pl-con').length >= 1) {
+                            oT.remove();
+                        } else {
+                            bT.parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none');
+                            oT.remove();
+                        }
+                        bT.parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+                    }
+                });
+            }else {
+                console.log('没有权限');
+            }
+        }
+    })
+</script>
+<!--点赞-->
+<script type="text/javascript">
+    $('.comment-show').on('click','.date-dz-z',function(){
+        var comment_id = $(this).parents('.date-dz').find('.comment_id').html();
+        var reply_id = $(this).parents('.date-dz').find('.reply_id').html();
+        var oThis = $(this);
+        if(reply_id){
+            console.log(reply_id);
+            var zNum = oThis.find('.z-num').html();
+            $.ajax({
+                type: "POST",
+                url: '{% url 'travel:like_reply' %}',
+                data: {reply_id:reply_id,login_user_id:{{ user.uid }},csrfmiddlewaretoken: '{{ csrf_token }}'},
+                dataType:'json',
+                cache: false,
+                success: function(data){
+                    if("success" == data.result){
+                        zNum++;
+                        oThis.addClass('date-dz-z-click');
+                        oThis.find('.z-num').html(zNum);
+                        oThis.find('.date-dz-z-click-red').addClass('red');
+                    }else if("error" == data.result){
+                        zNum--;
+                        oThis.removeClass('date-dz-z-click red');
+                        oThis.find('.z-num').html(zNum);
+                        oThis.find('.date-dz-z-click-red').removeClass('red');
+                    }
+                }
+            });
+        }else {
+            var zNum = oThis.find('.z-num').html();
+            $.ajax({
+                type: "POST",
+                url: '{% url 'travel:like_comment' %}',
+                data: {comment_id:comment_id,login_user_id:{{ user.uid }},csrfmiddlewaretoken: '{{ csrf_token }}'},
+                dataType:'json',
+                cache: false,
+                success: function(data){
+                    if("success" == data.result){
+                        zNum++;
+                        oThis.addClass('date-dz-z-click');
+                        oThis.find('.z-num').html(zNum);
+                        oThis.find('.date-dz-z-click-red').addClass('red');
+                    }else if("error" == data.result){
+                        zNum--;
+                        oThis.removeClass('date-dz-z-click red');
+                        oThis.find('.z-num').html(zNum);
+                        oThis.find('.date-dz-z-click-red').removeClass('red');
+                    }
+                }
+            });
+
+        }
+
+    })
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,16 @@
+PyMySQL==0.8.0
+pyOpenSSL==17.5.0
+python-dateutil==2.6.1
+queuelib==1.4.2
+Scrapy==1.5.0
+service-identity==17.0.0
+six==1.11.0
+stevedore==1.28.0
+text-unidecode==1.2
+Twisted==17.9.0
+unity-lens-photos==1.0
+virtualenv==15.1.0
+virtualenv-clone==0.2.6
+virtualenvwrapper==4.8.2
+w3lib==1.19.0
+zope.interface==4.4.3

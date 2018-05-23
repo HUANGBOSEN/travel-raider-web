@@ -1,0 +1,1432 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+   <link rel="stylesheet" href="{% static 'userset/css/common.css' %}">
+   <link rel="stylesheet" href="{% static 'userset/css/simpleAlert.css' %}">
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            overflow-y: scroll;
+        }
+
+        .dn {
+            display: none;
+        }
+
+        .page-wrap {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .page * {
+            min-width: 30px;
+            padding: 0 5px;
+            height: 36px;
+            font-size: 14px;
+            line-height: 36px;
+            color: #333;
+            background: #fff;
+            text-align: center;
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .page .page-points {
+            background-color: transparent;
+            margin: 0 5px 0 0;
+            padding: 0;
+        }
+
+        .page .current {
+            background: #e74b3b;
+            color: #fff;
+        }
+
+        page-wrap {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0;
+        }
+
+        .page-wrap a {
+            font-weight: 300 !important;
+            transition: .15s ease-in-out;
+            -webkit-transition: .15s ease-in-out;
+            -moz-transition: .15s ease-in-out;
+            -ms-transition: .15s ease-in-out;
+            -o-transition: .15s ease-in-out;
+        }
+
+        .page-wrap a span {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0 !important;
+            margin: 0 !important;
+            transition: .15s ease-in-out;
+            -webkit-transition: .15s ease-in-out;
+            -moz-transition: .15s ease-in-out;
+            -ms-transition: .15s ease-in-out;
+            -o-transition: .15s ease-in-out;
+        }
+
+        .page-wrap a:hover {
+            background-color: #e74b3b !important;
+            color: #fff !important;
+        }
+
+        .page-wrap a:hover span {
+            background-color: #e74b3b;
+        }
+
+        .page-wrap a span:before {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .page-wrap a:hover span:before {
+            color: #f0f0f0;
+        }
+
+        .page-wrap .arrow-page.arrow-left {
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+        }
+
+        .set-detail {
+            margin-left: 270px;
+            width: 640px;
+            padding: 30px 40px;
+        }
+
+        .set-detail .set-item:first-child {
+            margin: 40px 0 !important;
+        }
+
+        .set-detail .set-item .label {
+            width: 140px;
+            text-indent: 0;
+        }
+
+        .set-detail .set-item div {
+            margin-left: 140px;
+        }
+
+        .set-detail .set-item div span {
+            width: 128px;
+        }
+
+        .set-detail .set-item textarea {
+            max-width: 500px;
+        }
+
+        .set-ground .set-save{
+            width: 300px; /*float: right;*/
+            margin-left: 140px;
+        }
+
+        .authorize-contanier .result-empty {
+            padding: 60px 0 120px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #e3e4e5;
+        }
+
+        .authorize-contanier table {
+            border-collapse: collapse;
+        }
+
+        .authorize-contanier tr {
+            border-bottom: 1px solid #e3e4e5;
+        }
+
+        .authorize-contanier tr:last-child {
+            border-bottom: none;
+        }
+
+        .authorize-contanier tr td {
+            height: 104px;
+            padding: 0 10px;
+        }
+
+        .authorize-contanier tr td:nth-of-type(1) .app-logo, .authorize-contanier tr td:nth-of-type(1) .app-info {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .authorize-contanier tr td:nth-of-type(1) .app-info {
+            width: 255px;
+            margin-left: 12px;
+        }
+
+        .authorize-contanier tr td:nth-of-type(1) {
+            width: 53%;
+        }
+
+        .authorize-contanier tr td:nth-of-type(2) {
+            width: 16%;
+        }
+
+        .authorize-contanier tr td:nth-of-type(3) {
+            width: 9%;
+        }
+
+        .authorize-contanier tr td:nth-of-type(4) {
+            width: 11%;
+        }
+
+        .authorize-contanier .app-logo {
+            width: 64px;
+            height: 64px;
+        }
+
+        .authorize-contanier .app-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .authorize-contanier .app-desc {
+            font-size: 12px;
+            font-weight: 300;
+            color: #999;
+        }
+
+        .authorize-contanier .authorize-time {
+            font-size: 12px;
+            font-weight: 300;
+            color: #999;
+        }
+
+        .authorize-contanier .authorize-btn {
+            position: relative;
+            transition: .15s ease-in-out;
+            -webkit-transition: .15s ease-in-out;
+            -moz-transition: .15s ease-in-out;
+            -ms-transition: .15s ease-in-out;
+            -o-transition: .15s ease-in-out;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .authorize-contanier .authorize-btn.manage {
+            width: 80px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 2px;
+            background-color: #e74b3b;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .authorize-contanier .authorize-btn.manage:hover {
+            background-color: #cf4334;
+        }
+
+        .authorize-contanier .authorize-btn.cancel {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .authorize-contanier .authorize-btn.cancel:hover {
+            color: #666;
+        }
+
+        .authorize-detail {
+            background-color: #F7F8FA;
+            width: 720px;
+            padding: 0;
+        }
+
+        .authorize-detail .authorize-wrap {
+            background-color: #fff;
+            padding: 30px 40px 0;
+        }
+
+        .set-tab li a {
+            color: #000;
+        }
+
+        .authorize-popup {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, .8);
+        }
+
+        .authorize-popup .authorize-box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 380px;
+            border-radius: 2px;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+        }
+
+        .authorize-popup .authorize-box .popup-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            padding: 14px 20px;
+            line-height: 1;
+            border-bottom: 4px solid #f7f7f7;
+        }
+
+        .authorize-popup .authorize-box .icon-close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .authorize-popup .authorize-box .icon-close:before {
+            font-size: 20px;
+            color: #000;
+        }
+
+        .authorize-popup .authorize-box .icon-close:hover:before {
+            color: #666;
+        }
+
+        .authorize-popup .authorize-box .popup-detail {
+            padding: 20px 40px;
+        }
+
+        .authorize-popup .authorize-box .popup-tip {
+            font-size: 14px;
+            text-align: justify;
+            color: #333;
+            line-height: 1;
+        }
+
+        .authorize-popup .authorize-box .popup-tip .app-name {
+            color: #e74b3b;
+            padding: 0 4px;
+        }
+
+        .authorize-list .authorize-item {
+            margin-top: 12px;
+            cursor: pointer;
+        }
+
+        .authorize-list .authorize-item:first-child {
+            cursor: default;
+        }
+
+        .authorize-list .authorize-item i {
+            display: inline-block;
+            vertical-align: middle;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            border: solid 1px #999999;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .authorize-list .authorize-item.readonly {
+            cursor: default;
+        }
+
+        .authorize-list .authorize-item.readonly i {
+            background-image: url("//oss-xpc0.xpccdn.com/Upload/boss/2017/12/065a279d793318b.png");
+        }
+
+        .authorize-list .authorize-item.selected i {
+            background-image: url("//oss-xpc0.xpccdn.com/Upload/boss/2017/12/065a279d38bcd53.png");
+            background-color: #e74b3b;
+            border-color: #e74b3b;
+        }
+
+        .authorize-list .authorize-item .authorize-con {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 12px;
+            padding-left: 5px;
+        }
+
+        .authorize-popup .authorize-box .popup-btn {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: .15s ease-in-out;
+            -webkit-transition: .15s ease-in-out;
+            -moz-transition: .15s ease-in-out;
+            -ms-transition: .15s ease-in-out;
+            -o-transition: .15s ease-in-out;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.cancel {
+            width: 98px;
+            height: 34px;
+            line-height: 34px;
+            border-radius: 2px;
+            border: solid 1px rgba(153, 153, 153, .5);
+            color: #333;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.edit-authorize {
+            position: relative;
+            width: 100px;
+            height: 36px;
+            line-height: 36px;
+            background-color: #e74b3b;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.edit-authorize.gray {
+            background-color: #ccc;
+            cursor: default;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.edit-authorize.gray:hover {
+            background-color: #ccc;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.cancel:hover {
+            background-color: #f0f0f0;
+        }
+
+        .authorize-popup .authorize-box .popup-btn span.edit-authorize:hover {
+            background-color: #cf4334;
+        }
+
+        .ajax-loading:before {
+            height: 100%;
+            width: 100%;
+            background: #ef8176;
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "";
+            display: inline-block;
+        }
+
+        .ajax-loading:after {
+            width: 16px;
+            height: 16px; /*background: url(../img/loading.png) no-repeat;background-size: 100%;*/
+            -moz-animation: rotate 1s infinite linear;
+            -webkit-animation: rotate 1s infinite linear;
+            animation: rotate 1s infinite linear;
+            background-position: center;
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 1px solid #fff;
+            border-color: #fff #fff #fff transparent;
+            border-radius: 50%;
+        }
+
+        .common-notice-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .common-notice-cover span {
+            display: inline-block;
+        }
+
+        .common-notice-cover {
+            opacity: 0;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            z-index: 10003;
+        }
+
+        .common-notice-cover-ground {
+            width: 380px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -190px;
+            border-radius: 2px;
+            height: auto;
+        }
+
+        .common-notice-cover-ground h2:after {
+            display: none;
+        }
+
+        .common-notice-cover-ground .tip-wrap {
+            position: relative;
+            padding: 11px 20px 12px;
+            border-bottom: 4px solid #f7f7f7;
+        }
+
+        .common-notice-cover-ground .tip-wrap .tip-title {
+            font-size: 14px;
+            font-weight: 600px;
+            color: #333;
+            padding: 0;
+            text-align: left;
+        }
+
+        .common-notice-cover-ground .tip-wrap .notice-close {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .common-notice-cover-ground .tip-wrap .notice-close:before {
+            font-size: 18px;
+            color: #000;
+        }
+
+        .common-notice-cover-ground .tip-wrap .notice-close i:hover:before {
+            color: #666;
+        }
+
+        .common-notice-cover-ground .tip-contaniner {
+            padding: 20px 40px;
+            text-align: center;
+        }
+
+        .common-notice-cover-ground .tip-content {
+            font-size: 14px;
+            font-weight: 300;
+            color: #333;
+            margin: 0;
+        }
+
+        .common-notice-cover-ground .close-know {
+            width: 100px;
+            height: 60px;
+            border-radius: 2px;
+            background-color: #e74b3b;
+            color: #fff;
+            line-height: 60px;
+            font-size: 14px;
+            margin-top: 40px;
+            display: inline-block;
+        }
+
+        .common-notice-cover-ground .tip-btn {
+            margin-top: 30px;
+            font-size: 0;
+        }
+
+        .common-notice-cover-ground .tip-btn span {
+            display: inline-block;
+            width: 98px;
+            height: 34px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 34px;
+            border-radius: 2px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .common-notice-cover-ground .tip-btn .close-sure {
+            background-color: #fff;
+            border: solid 0.5px rgba(153, 153, 153, .5);
+            color: #333;
+            margin-right: 20px;
+        }
+
+        .opacity-1 {
+            opacity: 1 !important;
+        }
+
+        .bg-red {
+            background: #e74b3b !important;
+            transition: .15s ease-in-out;
+            -webkit-transition: .15s ease-in-out;
+            -moz-transition: .15s ease-in-out;
+            -ms-transition: .15s ease-in-out;
+            -o-transition: .15s ease-in-out;
+        }
+
+        .bg-red:hover {
+            background: #cf4334 !important;
+        }
+
+        .bg-red:active {
+            background: #cf4334 !important;
+        }
+
+        .line-hide-1 {
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+
+        .line-hide-2 {
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        #exampleInputFile{
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            border: 0;
+            margin-left: 30px;
+        }
+        #avatar-change{
+            margin-left:80px;
+            margin-bottom: 20px;
+        }
+        #avatar{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+    </style>
+    <div class="set-ground clearfix">
+        <ul class="set-tab">
+            <li class="cur" id="user_info" data-anchor="base">个人资料</li>
+            <li id="email_verify" data-anchor="security">账号安全</li>
+        </ul>
+
+        <div class="set-detail">
+            <h5>个人资料</h5>
+            <div class="set-item" style="margin-bottom: 40px;">
+                <span class="label" style="line-height: 120px;">头像</span>
+                <div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="avatar-change" id="avatar-change">
+                            <img id="avatar" src="/media/{{ user.avatar }}" alt="">
+                        </div>
+                        <em class="avatar-change-notice">（仅支持JPG、PNG文件小于6M）
+                            <input type="file" id="exampleInputFile" name="avatar">
+                            <input type="button" value="点击上传" onclick="save_avatar();"/>
+{#                            <a class="btn btn-danger" id="save_avatar">点击上传</a>#}
+                        </em>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="set-item clearfix">
+                <span class="label">昵称<i class="nes-red">*</i></span>
+
+                <div class="action-item nickname-item " style="height: 44px;line-height: 44px;">
+                    <input class="nickname" id="nickname" name="nickname" type="text" value="{{ user.name }}">
+                </div>
+            </div>
+
+
+            <div class="set-item clearfix">
+                <span class="label">性别</span>
+                <div>
+                    <span class="field sex color333" data-value="1">
+                        <em id="sex">男</em>
+                        <ul class="sex-list dn">
+                            <li data-value="1">男</li>
+                            <li data-value="2">女</li>
+                            <li data-value="0">未知</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="set-item clearfix">
+                <span class="label">生日</span>
+                <div>
+                    <span class="field year " data-value="">
+                        <em id="year"></em>年
+                        <ul class="dn">
+
+
+                                <li data-value="2018">2018</li>
+
+
+                                <li data-value="2017">2017</li>
+
+
+                                <li data-value="2016">2016</li>
+
+
+                                <li data-value="2015">2015</li>
+
+
+                                <li data-value="2014">2014</li>
+
+
+                                <li data-value="2013">2013</li>
+
+
+                                <li data-value="2012">2012</li>
+
+
+                                <li data-value="2011">2011</li>
+
+
+                                <li data-value="2010">2010</li>
+
+
+                                <li data-value="2009">2009</li>
+
+
+                                <li data-value="2008">2008</li>
+
+
+                                <li data-value="2007">2007</li>
+
+
+                                <li data-value="2006">2006</li>
+
+
+                                <li data-value="2005">2005</li>
+
+
+                                <li data-value="2004">2004</li>
+
+
+                                <li data-value="2003">2003</li>
+
+
+                                <li data-value="2002">2002</li>
+
+
+                                <li data-value="2001">2001</li>
+
+
+                                <li data-value="2000">2000</li>
+
+
+                                <li data-value="1999">1999</li>
+
+
+                                <li data-value="1998">1998</li>
+
+
+                                <li data-value="1997">1997</li>
+
+
+                                <li data-value="1996">1996</li>
+
+
+                                <li data-value="1995">1995</li>
+
+
+                                <li data-value="1994">1994</li>
+
+
+                                <li data-value="1993">1993</li>
+
+
+                                <li data-value="1992">1992</li>
+
+
+                                <li data-value="1991">1991</li>
+
+
+                                <li data-value="1990">1990</li>
+
+
+                                <li data-value="1989">1989</li>
+
+
+                                <li data-value="1988">1988</li>
+
+
+                                <li data-value="1987">1987</li>
+
+
+                                <li data-value="1986">1986</li>
+
+
+                                <li data-value="1985">1985</li>
+
+
+                                <li data-value="1984">1984</li>
+
+
+                                <li data-value="1983">1983</li>
+
+
+                                <li data-value="1982">1982</li>
+
+
+                                <li data-value="1981">1981</li>
+
+
+                                <li data-value="1980">1980</li>
+
+
+                                <li data-value="1979">1979</li>
+
+
+                                <li data-value="1978">1978</li>
+
+
+                                <li data-value="1977">1977</li>
+
+
+                                <li data-value="1976">1976</li>
+
+
+                                <li data-value="1975">1975</li>
+
+
+                                <li data-value="1974">1974</li>
+
+
+                                <li data-value="1973">1973</li>
+
+
+                                <li data-value="1972">1972</li>
+
+
+                                <li data-value="1971">1971</li>
+
+
+                                <li data-value="1970">1970</li>
+
+
+                                <li data-value="1969">1969</li>
+
+
+                                <li data-value="1968">1968</li>
+
+
+                                <li data-value="1967">1967</li>
+
+
+                                <li data-value="1966">1966</li>
+
+
+                                <li data-value="1965">1965</li>
+
+
+                                <li data-value="1964">1964</li>
+
+
+                                <li data-value="1963">1963</li>
+
+
+                                <li data-value="1962">1962</li>
+
+
+                                <li data-value="1961">1961</li>
+
+
+                                <li data-value="1960">1960</li>
+
+
+                                <li data-value="1959">1959</li>
+
+
+                                <li data-value="1958">1958</li>
+
+
+                                <li data-value="1957">1957</li>
+
+
+                                <li data-value="1956">1956</li>
+
+
+                                <li data-value="1955">1955</li>
+
+
+                                <li data-value="1954">1954</li>
+
+
+                                <li data-value="1953">1953</li>
+
+
+                                <li data-value="1952">1952</li>
+
+
+                                <li data-value="1951">1951</li>
+
+
+                                <li data-value="1950">1950</li>
+
+
+                        </ul>
+                    </span>
+                    <span class="field month " data-value="">
+                        <em id="month"></em>月
+                        <ul class="dn">
+
+
+                                <li data-value="01">01</li>
+
+
+                                <li data-value="02">02</li>
+
+
+                                <li data-value="03">03</li>
+
+
+                                <li data-value="04">04</li>
+
+
+                                <li data-value="05">05</li>
+
+
+                                <li data-value="06">06</li>
+
+
+                                <li data-value="07">07</li>
+
+
+                                <li data-value="08">08</li>
+
+
+                                <li data-value="09">09</li>
+
+
+                                <li data-value="10">10</li>
+
+
+                                <li data-value="11">11</li>
+
+
+                                <li data-value="12">12</li>
+
+
+                        </ul>
+                    </span>
+                    <span class="field day " data-value="">
+                        <em id="day"></em>日
+                        <ul class="dn">
+
+
+                                <li data-value="01">01</li>
+
+
+                                <li data-value="02">02</li>
+
+
+                                <li data-value="03">03</li>
+
+
+                                <li data-value="04">04</li>
+
+
+                                <li data-value="05">05</li>
+
+
+                                <li data-value="06">06</li>
+
+
+                                <li data-value="07">07</li>
+
+
+                                <li data-value="08">08</li>
+
+
+                                <li data-value="09">09</li>
+
+
+                                <li data-value="10">10</li>
+
+
+                                <li data-value="11">11</li>
+
+
+                                <li data-value="12">12</li>
+
+
+                                <li data-value="13">13</li>
+
+
+                                <li data-value="14">14</li>
+
+
+                                <li data-value="15">15</li>
+
+
+                                <li data-value="16">16</li>
+
+
+                                <li data-value="17">17</li>
+
+
+                                <li data-value="18">18</li>
+
+
+                                <li data-value="19">19</li>
+
+
+                                <li data-value="20">20</li>
+
+
+                                <li data-value="21">21</li>
+
+
+                                <li data-value="22">22</li>
+
+
+                                <li data-value="23">23</li>
+
+
+                                <li data-value="24">24</li>
+
+
+                                <li data-value="25">25</li>
+
+
+                                <li data-value="26">26</li>
+
+
+                                <li data-value="27">27</li>
+
+
+                                <li data-value="28">28</li>
+
+
+                                <li data-value="29">29</li>
+
+
+                                <li data-value="30">30</li>
+
+
+                                <li data-value="31">31</li>
+
+
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div class="set-item clearfix">
+                <span class="label">简介</span>
+                <div><textarea id="profile" name="profile"></textarea></div>
+            </div>
+
+
+            <div class="set-item clearfix">
+                <span class="label">毕业院校</span>
+                <div><input id="school" name="school" type="text" value=""></div>
+            </div>
+
+            <div class="form-action">
+                <div class="set-save submit-btn" onclick="set_save();">保存</div>
+            </div>
+        </div>
+
+        <div class="set-detail dn">
+            <h5>账号安全</h5>
+            <div class="account-item color666">
+                如遇到账号出现问题，可联系微信客服。（客服请添加微信好友：旅行小助手 id：love-msy）
+            </div>
+
+            <div class="set-item clearfix">
+                <span class="label">修改密码<i class="nes-red">*</i></span>
+                <span><i class="nes-red" id="password_info" style="font-size: 1px;line-height: 15px;color: red"></i></span>
+
+                <div class="action-item nickname-item " style="height: 44px;line-height: 44px;">
+                    <input class="nickname" id="password" name="password" type="text" >
+
+                </div>
+            </div>
+            <div class="set-item clearfix">
+                <span class="label">邮箱</span>
+                <span><i class="nes-red" id="revise_email_info" style="font-size: 1px;line-height: 15px;color: red">*(不填写则不更改，填写验证通过后则更改绑定邮箱)</i></span>
+
+                <div class="action-item nickname-item " style="height: 44px;line-height: 44px;">
+                    <input class="nickname" id="user_email" name="user_email" type="text" >
+
+                </div>
+            </div>
+            <span><i class="nes-red" id="code_info" style="font-size: 1px;line-height: 15px;color: red"></i></span>
+            <div class="form-action" style="margin-left: 270px;margin-top: 10px">
+                <div class="action-item identifying-action" style="margin-bottom: 0">
+                    <input name="code" id="code" type="text" placeholder="邮箱验证码"><span class="identifying-achieve" id="revise_email">获取验证码</span>
+                </div>
+            </div>
+            <div class="form-action">
+                <span><i class="nes-red" id="button" style="font-size: 1px;line-height: 15px;color: red"></i></span>
+                <button class="flip-link btn btn-info" style="width: 300px;height: 44px;margin-left: 140px;" onclick="revise_save();">提交</button>
+            </div>
+        </div>
+
+</div>
+{% endblock %}
+
+{% block foot_js %}
+    <script type="text/javascript" src="{% static 'userset/js/settings.js' %}"></script>
+
+    <script>
+
+        var _setDetail = $(".set-detail"),
+            _setTabLi = $("#user_info");
+        // 侧边tab切换
+        $("#user_info").on("click", function () {
+            location.href = "#" + $(this).data("anchor");
+            checkAnchor();
+        });
+
+        function checkAnchor(anchor) {
+            var anchorMap = ["#base", "#security"],
+                setTabIndex = 0;
+
+            if (anchor) {
+
+                setTabIndex = anchorMap.indexOf(anchor);
+
+            } else {
+
+                for (var i = 0; i < anchorMap.length; i++) {
+                    if (location.href.indexOf(anchorMap[i]) > -1) {
+                        setTabIndex = i;
+                    }
+
+                }
+            }
+            if (setTabIndex == 0) {
+                $(".set-save").parent().removeClass("dn")
+            } else {
+                $(".set-save").parent().addClass("dn")
+            }
+
+            _setTabLi.removeClass("cur");
+            _setTabLi.eq(setTabIndex).addClass("cur");
+
+            _setDetail.addClass("dn");
+            _setDetail.eq(setTabIndex).removeClass("dn");
+
+        }
+
+
+        //上传个人头像
+        function save_avatar() {
+            var formdata=new FormData();
+            formdata.append('avatar',$('#exampleInputFile').get(0).files[0]);
+            $.ajax({
+                url:'{% url 'travel:submit_avatar' %}',
+                type:'post',
+                contentType:false,
+                data:formdata,
+                processData:false,
+                success:function(info){
+                    if(info.result=="success"){
+                        var avatar_file_new = '/media'+info.avatar_file;
+                        $('#avatar').attr('src',avatar_file_new)
+                    }else if("error" == data.result){
+                        window.location.href="{% url 'travel:login' %}";
+                    }
+                }
+            });
+        }
+
+
+        //上传个人信息
+        function set_save() {
+            var nickname =$('#nickname').val();
+            var sex = $('#sex').html();
+            var birthday =$('#year').html()+'年'+$('#month').html()+'月'+$('#day').html()+'日';
+            var profile = $('#profile').val();
+            var school = $('#school').val();
+            $.ajax({
+				type: "POST",
+				url: '{% url 'travel:userset' %}',
+		    	data: {nickname:nickname,sex:sex,birthday:birthday,profile:profile,school:school,csrfmiddlewaretoken: '{{ csrf_token }}'},
+				dataType:'json',
+				cache: false,
+				success: function(data) {
+                    if ("success" == data.result) {
+                        console.log(data.result)
+                    } else if("error" == data.result){
+                        window.location.href="{% url 'travel:login' %}";
+                    }
+                }
+			});
+        }
+
+        //修改绑定的email,发送email
+        var countdown=60;
+        $("body").on('click','#revise_email',function(){
+            function verify_email() {
+                if(!ismail($("#user_email").val())){
+                    $("#revise_email_info").html('邮箱格式不正确');
+                    return false;
+                }else{
+                    if (countdown == 60) {
+                        $.ajax({
+                            type: "POST",
+                            url: '{% url 'travel:send_email' %}',
+                            data: {EMAIL:$('#user_email').val(),csrfmiddlewaretoken: '{{ csrf_token }}'},
+                            dataType:'json',
+                            cache: false,
+                            success: function(data){
+                                if("00" == data.result){
+                                    console.log("发送成功");
+                                    $('#revise_email_info').html('发送成功');
+                                }else if("04" == data.result){
+                                    console.log("发送失败");
+                                    $('#revise_email_info').html('发送失败');
+                                }else if('05' == data.result){
+                                    $('#revise_email_info').html('该邮箱已经绑定账号');
+                                }
+                            }
+                        });
+                    }
+                    if (countdown == 0) {
+                        $('#revise_email').removeAttr("disabled");
+                        $('#revise_email').html("获取验证码");
+                        countdown = 60;
+                        return;
+                    } else {
+                        $('#revise_email').attr("disabled", "disabled");
+                        $('#revise_email').html("重新发送(" + countdown + ")");
+                        countdown--;
+                    }
+                    setTimeout(function() {
+                        verify_email() }
+                        ,1000)
+                }
+            }
+            verify_email();
+
+        });
+
+
+        //邮箱格式校验
+        function ismail(mail){
+            return(new RegExp(/^(?:[a-zA-Z0-9]+[_\-\+\.]?)*[a-zA-Z0-9]+@(?:([a-zA-Z0-9]+[_\-]?)*[a-zA-Z0-9]+\.)+([a-zA-Z]{2,})+$/).test(mail));
+        }
+
+        //提交修改的内容
+        function revise_save() {
+            var password =$('#password').val();
+            var email = $('#user_email').val();
+            var code = $('#code').val();
+            if(password==''){
+                $('#password_info').html('修改的密码不能为空')
+            }else {
+                $.ajax({
+                    type: "POST",
+                    url: '{% url 'travel:user_revise_save' %}',
+                    data: {password:password,email:email,code:code,csrfmiddlewaretoken: '{{ csrf_token }}'},
+                    dataType:'json',
+                    cache: false,
+                    success: function(data) {
+                        if("00" == data.result){
+                            $('#button').html('提交成功');
+                            $('#code_info').html('');
+                        }else if("06" == data.result){
+                            $('#code_info').html('验证码输入有误');
+                        }else if("08" == data.result){
+                            $('#code_info').html('验证码超时');
+                        }
+                    }
+                });
+            }
+        }
+
+        //单次双选弹框
+        $("#email_verify").click(function () {
+            $.get("{% url 'travel:get_session_email' %}",function(data){
+                 if (data.is_verify_email!=='yes'){
+                    var dblChoseAlert = simpleAlert({
+                        "title":"为了保护账号安全，请先完成邮箱验证",
+                        "content":"验证码会发送到您（{{ user.email }}）的邮箱，请注意查收！",
+                        "buttons":{
+                            "确定":function () {
+                                $.ajax({
+                                    type: "POST",
+                                    url: '{% url 'travel:verify_email' %}',
+                                    data: {EMAIL:$("#EMAIL").val(),csrfmiddlewaretoken: '{{ csrf_token }}'},
+                                    dataType:'json',
+                                    cache: false,
+                                    success: function(data){
+                                        if("00" == data.result){
+                                            dblChoseAlert.close();
+                                            _setTabLi = $("#email_verify");
+                                            location.href = "#" + $('#email_verify').data("anchor");
+                                            checkAnchor();
+                                        }else if("06" == data.result){
+                                            $("#rcode").tips({
+                                                side : 1,
+                                                msg : "验证码输入有误",
+                                                bg : '#FF5080',
+                                                time : 15
+                                            });
+                                            showfh();
+                                            $("#rcode").focus();
+                                        }else if("08" == data.result){
+                                            $("#rcode").tips({
+                                                side : 1,
+                                                msg : "验证码超时",
+                                                bg : '#FF5080',
+                                                time : 15
+                                            });
+                                            showfh();
+                                            $("#rcode").focus();
+                                        }
+                                    }
+                                });
+                            },
+                            "取消":function () {
+                                dblChoseAlert.close();
+                                $("#user_info").trigger("click");
+                            }
+                        }
+                    })
+                }else {
+                    _setTabLi = $("#email_verify");
+                    location.href = "#" + $('#email_verify').data("anchor");
+                    checkAnchor();
+                }
+            });
+
+        });
+
+
+        //弹窗
+        var simpleAlert = function (opts) {
+            //设置默认参数
+            var opt = {
+                "closeAll": false,
+                "title": "提示",
+                "content": "",
+                "buttons": {}
+            };
+            //合并参数
+            var option = $.extend(opt, opts);
+            //事件
+            var dialog = {};
+            var $simpleAlert = $('<div class="simpleAlert">');
+            var $shelter = $('<div class="simpleAlertShelter">');
+            var $simpleAlertBody = $('<div class="simpleAlertBody">');
+            var $simpleAlertBodyClose = $('<div class="simpleAlertBodyClose">✕</div>');
+            var $simpleAlertBodyTitle = $('<p class="simpleAlertBodyTitle">' + option.title + '</p>');
+            var $simpleAlertBodyContent = $('<p class="simpleAlertBodyContent">' + option.content + '</p>');
+            var $emailContent = $('<div id="emailContent"><input name="code" id="EMAIL" type="text" placeholder="邮箱验证码"><button type="button" class="flip-link btn btn-info" id="verify_email">免费获取验证码</button></div>');
+            dialog.init = function () {
+                $simpleAlertBody.append($simpleAlertBodyClose).append($simpleAlertBodyContent).append($simpleAlertBodyTitle).append($emailContent);
+                var num = 0;
+                var only = false;
+                var onlyArr = [];
+                for (var i = 0; i < 2; i++) {
+                    for (var key in option.buttons) {
+                        switch (i) {
+                            case 0:
+                                onlyArr.push(key);
+                                break;
+                            case 1:
+                                if (onlyArr.length <= 1) {
+                                    only = true;
+                                } else {
+                                    only = false;
+                                }
+                                num++;
+                                var $btn = $('<button class="simpleAlertBtn simpleAlertBtn' + num + '">' + key + '</button>')
+                                $btn.bind("click", option.buttons[key]);
+                                if (only) {
+                                    $btn.addClass("onlyOne")
+                                }
+                                $simpleAlertBody.append($btn);
+                                break;
+                        }
+
+                    }
+                }
+                $simpleAlert.append($shelter).append($simpleAlertBody);
+                $("body").append($simpleAlert);
+                $simpleAlertBody.show().animate({"marginTop":"-128px","opacity":"1"},300);
+            };
+            //右上角关闭按键事件
+            $simpleAlertBodyClose.bind("click", function () {
+                option.closeAll=false;
+                dialog.close();
+                $("#user_info").trigger("click");
+            });
+            dialog.close = function () {
+                if(option.closeAll){
+                    $(".simpleAlertBody").animate({"marginTop": "-188px", "opacity": "0"}, 200, function () {
+                        $(".simpleAlert").remove()
+                    });
+                    $(".simpleAlertShelter").animate({"opacity": "0"}, 200);
+                }else {
+                    $simpleAlertBody.animate({"marginTop": "-188px", "opacity": "0"}, 200, function () {
+                        $(".simpleAlert").last().remove()
+                    });
+                    $shelter.animate({"opacity": "0"}, 200);
+                }
+            };
+
+            //发送email
+            var countdown=60;
+            $("body").on('click','#verify_email',function(){
+                function verify_email() {
+                    if (countdown == 60) {
+                        $.ajax({
+                            type: "POST",
+                            url: '{% url 'travel:revise_userinfo_send_email' %}',
+                            data: {EMAIL:'{{ user.email }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+                            dataType:'json',
+                            cache: false,
+                            success: function(data){
+                                if("00" == data.result){
+                                    $('.simpleAlertBodyContent').html('验证码发送成功')
+                                }else if("04" == data.result){
+                                    $('.simpleAlertBodyContent').html('发送失败')
+                                }
+                            }
+                        });
+                    }
+                    if (countdown == 0) {
+                        $('#verify_email').removeAttr("disabled");
+                        $('#verify_email').html("免费获取验证码");
+                        countdown = 60;
+                        return;
+                    } else {
+                        $('#verify_email').attr("disabled", "disabled");
+                        $('#verify_email').html("重新发送(" + countdown + ")");
+                        countdown--;
+                    }
+                    setTimeout(function() {
+                        verify_email() }
+                        ,1000)
+                    }
+                    verify_email()
+            });
+
+            dialog.init();
+            return dialog;
+
+        };
+
+
+
+    </script>
+{% endblock %}
